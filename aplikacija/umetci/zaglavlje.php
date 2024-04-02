@@ -10,7 +10,7 @@
     <ul class="navigacija">
         <li>
             <!--TIPKA PROJEKT-->
-            <a href="pocetna.php">PROJEKT</a>
+            <a href="index.php">PROJEKT</a>
         </li>
         <li>
             <!--DROP DOWN RAZREDI-->
@@ -26,17 +26,29 @@
             </ul>
         </li>
 
+        <!-- Uvjetno prikazivanje ovisno o statusu prijave korisnika -->
+        <?php if(isset($_SESSION['id'])): ?>
         <li>
             <!--DROP DOWN IME PREZIME RAZRED-->
             <a href="#" class="ime">
                 <i class="fa fa-user"></i>
-                Bruno Miklin 4.RT
+                <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']; ?>
                 <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
             </a>
             <ul>
-                <li><a href="admin/objave/index.php">Objavi oglas</a></li>
+                <!-- Ako je korisnik admin, prikaži Dashboard, inače prikaži opciju za objavu oglasa -->
+                <?php if($_SESSION['admin']): ?>
+                <li><a href="admin/objave/index.php">Dashboard</a></li>
+                <?php else: ?>
+                <li><a href="korisnik/index.php">Objavi oglas</a></li>
+                <?php endif; ?>
                 <li><a href="#" class="odjava">Odjavi se</a></li>
             </ul>
         </li>
+        <?php else: ?>
+        <!-- Ako korisnik nije prijavljen, prikaži opcije za registraciju i prijavu -->
+        <li><a href="register.php">Registriraj se</a></li>
+        <li><a href="login.php">Logiraj se</a></li>
+        <?php endif; ?>
     </ul>
 </header>

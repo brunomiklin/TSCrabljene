@@ -1,4 +1,4 @@
-<?php include("put.php")?>
+<?php include("path.php")?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,3 +1,7 @@
+<?php
+include("../../path.php");
+include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+?>
 <!DOCTYPE html>
 <html lang="hr">
 
@@ -35,7 +39,7 @@
             <li>
                 <a href="#projekt-okvir" class="ime">
                     <i class="fa fa-user"></i>
-                    Bruno Miklin 4.RT
+                    <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']  ;?>
                     <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
                 </a>
                 <ul>

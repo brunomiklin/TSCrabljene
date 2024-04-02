@@ -1,3 +1,7 @@
+<?php include("../path.php");
+include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+?>
+
 <!DOCTYPE html>
 <html lang="hr">
 
@@ -31,11 +35,10 @@
         </div>
         <i class="fa fa-bars meni-crtice"></i>
         <ul class="navigacija">
-            <li> <a href="../pocetna.php" class="ime">PROJEKT</a></li>
             <li>
-                <a href="#projekt-okvir" class="ime">
+                <a href="#" class="ime">
                     <i class="fa fa-user"></i>
-                    Bruno Miklin 4.RT
+                    <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']; ?>
                     <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
                 </a>
                 <ul>
@@ -95,7 +98,7 @@
     <!--SKRIPTA ZA ADMIN-->
     <script src="/js/skriptaadmin.js"></script>
     <!--SKRIPTA ZA DROPDOWN NA MOBITELU-->
-    <script src="/js/scripts.js"></script>
+    <script src="dodaci/js/skripta_dropdown.js"></script>
 </body>
 
 </html>

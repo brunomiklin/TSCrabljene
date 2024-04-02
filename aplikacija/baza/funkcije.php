@@ -1,130 +1,112 @@
 <?php
-
-use function PHPSTORM_META\elementType;
-
-require ('konekcija.php');
-
+session_start();//STARTAMO SESIJU
+require('konekcija.php');
 
 function ispis($vrijednost)
 {
-    echo "<pre>",print_r($vrijednost, true),"</pre>";
+    echo "<pre>", print_r($vrijednost, true), "</pre>";
     die();
 }
 
-//FUNKCIJA KOJA IZVRŠAVA UPIT (POZOVE SE KASNIJE U DRUGIM FUNCKIJAMA)
 function izvršiUpit($sql, $podaci)
 {
-global $konek;
-$stmt = $konek->prepare($sql);
-$vrijednosti = array_values($podaci);
-$tipovi = str_repeat('s',count($vrijednosti));
-$stmt->bind_param($tipovi, ...$vrijednosti);
-$stmt->execute();
-return $stmt;
+    global $konek;
+    $stmt = $konek->prepare($sql);
+    $vrijednosti = array_values($podaci);
+    $tipovi = str_repeat('s', count($vrijednosti));
+    $stmt->bind_param($tipovi, ...$vrijednosti);
+    $stmt->execute();
+    return $stmt;
 }
-//--FUNKCIJA KOJA IZVRŠAVA UPIT (POZOVE SE KASNIJE U DRUGIM FUNCKIJAMA)
 
-//FUNKCIJA KOJA ODABERE SVE IZ TABLICE (ZAŠTITA OD SQL INJECTIONA)
-function odaberiSve($tablica , $uvijeti = [])
+function odaberiSve($tablica, $uvijeti = [])
 {
     global $konek;
     $sql = "SELECT * FROM $tablica";
-    if(empty($uvijeti))
-    {
-
+    if (empty($uvijeti)) {
         $stmt = $konek->prepare($sql);
         $stmt->execute();
         $podaci = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $podaci;
-        
-    }else{
-        $i=0;
+    } else {
+        $i = 0;
         foreach ($uvijeti as $key => $value) {
-            if($i===0)
-            {
+            if ($i === 0) {
                 $sql = $sql . " WHERE $key=?";
-            }else{
+            } else {
                 $sql = $sql . " AND $key=?";
             }
             $i++;
         }
-        
-       
-
     }
- 
-  
-    $stmt = izvršiUpit($sql,$uvijeti);
+    $stmt = izvršiUpit($sql, $uvijeti);
     $podaci = $stmt->get_result()->fetch_assoc();
     return $podaci;
-    
-
 }
-//--FUNKCIJA KOJA ODABERE SVE IZ TABLICE (ZAŠTITA OD SQL INJECTIONA)
 
-//FUNKCIJA KOJA ODABERE JEDAN ELEMENT
-function odaberiJedan($tablica , $uvijet)
+function odaberiJedan($tablica, $uvijet)
 {
     global $konek;
     $sql = "SELECT * FROM $tablica";
-    
-        $i=0;
-        foreach ($uvijet as $key => $value) {
-            if($i===0)
-            {
-                $sql = $sql . " WHERE $key=?";
-            }else{
-                $sql = $sql . " AND $key=?";
-            }
-            $i++;
+    $i = 0;
+    foreach ($uvijet as $key => $value) {
+        if ($i === 0) {
+            $sql = $sql . " WHERE $key=?";
+        } else {
+            $sql = $sql . " AND $key=?";
         }
-        
-       
+        $i++;
+    }
     $sql = $sql . " LIMIT 1";
-    
- 
-    $stmt = izvršiUpit($sql,$uvijet);
+    $stmt = izvršiUpit($sql, $uvijet);
     $podaci = $stmt->get_result()->fetch_assoc();
     return $podaci;
-    
 }
-//--FUNKCIJA KOJA ODABERE JEDAN ELEMENT
 
-
-//FUNKCIJA KOJA UNOSI NESTO U TABLICU
-
-function unesi($tablica,$podaci)
+function unesi($tablica, $podaci)
 {
-    //$sql = "INSERT INTO korisnici SET ....
     global $konek;
-  $sql = "INSERT INTO korisnici SET";
-  $i=0;
-  foreach ($podaci as $key => $value) {
-      if($i===0)
-      {
-          $sql = $sql . " $key=?";
-      }else{
-          $sql = $sql . ", $key=?";
-      }
-      $i++;
-  }
-
-  $stmt = izvršiUpit($sql,$podaci);
-  $id = $stmt->insert_id;
-  return $id;
-
+    $sql = "INSERT INTO $tablica SET ";
+    $i = 0;
+    $vrijednosti = [];
+    foreach ($podaci as $key => $value) {
+        if ($i === 0) {
+            $sql .= "$key=?";
+        } else {
+            $sql .= ", $key=?";
+        }
+        $vrijednosti[] = $value;
+        $i++;
+    }
+    $stmt = izvršiUpit($sql, $vrijednosti);
+    $id = $stmt->insert_id;
+    return $id;
 }
-//--FUNKCIJA KOJA UNOSI NESTO U TABLICU
 
-$podatkci = [
-    'admin' => '1',
-    'email' => 'bruno@lol15.hr',
-    'lozinka'=> '54321',
-    'ime'=>'bruno',
+function azuriraj($tablica, $id, $podaci)
+{
+    global $konek;
+    $sql = "UPDATE $tablica SET";
+    $i = 0;
+    foreach ($podaci as $key => $value) {
+        if ($i === 0) {
+            $sql .= " $key=?";
+        } else {
+            $sql .= ", $key=?";
+        }
+        $i++;
+    }
+    $sql .= " WHERE id=?";
+    $podaci['id'] = $id;
+    $stmt = izvršiUpit($sql, $podaci);
+    return $stmt->affected_rows;
+}
 
-  
-   
-];
-
-$user = unesi('korisnici', $podatkci);
-ispis($user);
+function obrisi($tablica, $id)
+{
+    global $konek;
+    $sql = "DELETE FROM $tablica WHERE id=?";
+    $stmt = izvršiUpit($sql, ['id' => $id]);
+    return $stmt->affected_rows;
+}
+?>

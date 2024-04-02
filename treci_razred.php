@@ -1,4 +1,6 @@
-<?php include("put.php")?>
+<?php include("path.php");
+include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
