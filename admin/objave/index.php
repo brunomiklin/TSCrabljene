@@ -1,6 +1,12 @@
 <?php
 include("../../path.php");
-include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+include(ROOT_PATH . "/aplikacija/logike/objavaljuj.php");
+
+if ($_SESSION['admin'] != 1) {
+
+    header("Location: ../../index.php"); 
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="hr">
@@ -33,13 +39,10 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
                 <!-- Koristite 'fas' umjesto 'fa-solid' za Font Awesome ikonu -->
             </h1>
         </div>
-        <i class="fa fa-bars meni-crtice"></i>
-        <ul class="navigacija">
-            <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
-            <li>
-            <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
 
-        </ul>
+
+
+
     </header>
 
     <div class="glavni-okvir">
@@ -47,6 +50,9 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
             <ul>
                 <li><a href="index.php">Uredi Objave</a></li>
                 <li><a href="../korisnici/index.php">Uredi Korisnike</a></li>
+                <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
+                <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
+
             </ul>
         </div>
         <div class="admin-komande">
@@ -63,20 +69,25 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
                         <th>Objava</th>
                     </thead>
                     <tbody>
+                        <?php  $brojac=1;
+                        foreach ($objave as $key => $objava): ?>
+
+
                         <tr>
-                            <td>1</td>
-                            <td>Ovo je prva objava</td>
-                            <td>Bruno Miklin</td>
-                            <td><a href="#" class="obrisi">Obriši</a></td>
-                            <td><a href="#" style="color: #6a8055; text-decoration: none;">LINK</a></td>
+                            <td><?php echo $brojac++;?></td>
+                            <td><?php echo $objava['naslov']?></td>
+                            <td><?php $korisnik_id = $objava['korisnik_id'];
+                                    $korisnik = odaberiJedan('korisnici',['id' => $korisnik_id ]);
+                                    echo ($korisnik['ime']. ' ' . $korisnik['prezime']);
+                            ?>
+
+                            <td><a href="?delete_id2=<?php echo $objava['id'];?>" class="obrisi">Obriši</a></td>
+                            <td><a href="../../objava.php?id=<?php echo $objava['id']; ?>"
+                                    style="color: green;">LINK</a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Ovo je prva objava</td>
-                            <td>Niko Trstenjak</td>
-                            <td><a href="#" class="obrisi">Obriši</a></td>
-                            <td><a href="#" style="color: #6a8055; text-decoration: none;">LINK</a></td>
-                        </tr>
+
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

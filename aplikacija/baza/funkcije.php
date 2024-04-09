@@ -12,35 +12,41 @@ function izvršiUpit($sql, $podaci)
 {
     global $konek;
     $stmt = $konek->prepare($sql);
+    if (!$stmt) {
+        echo "Error: " . $konek->error;
+        return false;
+    }
+    
     $vrijednosti = array_values($podaci);
-    $tipovi = str_repeat('s', count($vrijednosti));
-    $stmt->bind_param($tipovi, ...$vrijednosti);
+    $tipovi = !empty($vrijednosti) ? str_repeat('s', count($vrijednosti)) : '';
+    
+    if (!empty($tipovi)) {
+        $stmt->bind_param($tipovi, ...$vrijednosti);
+    }
+    
     $stmt->execute();
     return $stmt;
 }
+
 
 function odaberiSve($tablica, $uvijeti = [])
 {
     global $konek;
     $sql = "SELECT * FROM $tablica";
-    if (empty($uvijeti)) {
-        $stmt = $konek->prepare($sql);
-        $stmt->execute();
-        $podaci = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $podaci;
-    } else {
+    if (!empty($uvijeti)) {
+        $sql .= " WHERE ";
         $i = 0;
         foreach ($uvijeti as $key => $value) {
-            if ($i === 0) {
-                $sql = $sql . " WHERE $key=?";
-            } else {
-                $sql = $sql . " AND $key=?";
+            if ($i > 0) {
+                $sql .= " AND ";
             }
+            $sql .= "$key=?";
             $i++;
         }
     }
     $stmt = izvršiUpit($sql, $uvijeti);
-    $podaci = $stmt->get_result()->fetch_assoc();
+    $result = $stmt->get_result();
+    $podaci = $result->fetch_all(MYSQLI_ASSOC);
     return $podaci;
 }
 

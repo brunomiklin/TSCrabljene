@@ -74,7 +74,7 @@ body {
 
 }
 
-* TABLICA */ table {
+table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.1rem;
@@ -244,9 +244,6 @@ header ul li ul li a:hover {
   color: red;
 }
 
-header .meni-crtice {
-  display: none;
-}
 
 /*//ZAGLAVLJE*/
 
@@ -267,19 +264,16 @@ header .meni-crtice {
   }
 
 
-  .glavni-okvir .lijevi-pokaznik {
-    height: 50%;
-  }
 
 
   table {
     font-size: 0.8rem;
-
+    width: 95%;
   }
 
   header ul {
     max-height: 1000px;
-    /* Promijenite na željenu visinu */
+
     overflow: visible;
   }
 
@@ -311,19 +305,15 @@ header .meni-crtice {
 
   .glavni-okvir .lijevi-pokaznik {
     flex: none;
-    height: 110%;
+    height: 197px;
   }
 
   .glavni-okvir .admin-komande {
     flex: none;
-    width: 100%;
+    width: 90%;
     padding: 20px;
   }
 
-  /* Tablica */
-  table {
-    font-size: 10px;
-    size: 25px;
-  }
+
 
 }

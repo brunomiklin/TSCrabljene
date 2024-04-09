@@ -1,6 +1,11 @@
 <?php
 include("../../path.php");
-include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+include(ROOT_PATH . "/aplikacija/logike/korisnici.php");
+if ($_SESSION['admin'] != 1) {
+
+    header("Location: ../../index.php"); 
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="hr">
@@ -34,13 +39,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
                 <!-- Koristite 'fas' umjesto 'fa-solid' za Font Awesome ikonu -->
             </h1>
         </div>
-        <i class="fa fa-bars meni-crtice"></i>
-        <ul class="navigacija">
-            <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
-            <li>
-            <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
 
-            </li>
         </ul>
     </header>
     <!--//ZAGLAVLJE-->
@@ -49,6 +48,9 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
             <ul>
                 <li><a href="../objave">Uredi Objave</a></li>
                 <li><a href="index.php">Uredi Korisnike</a></li>
+                <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
+                <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
+
             </ul>
         </div>
         <div class="admin-komande">
@@ -59,30 +61,28 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
                     <thead>
                         <th>ID</th>
                         <th>Ime i Prezime</th>
-                        <th>Razred</th>
-                        <th>Smjer</th>
                         <th>Uloga</th>
-                        <th colspan="5">Akcija</th>
+                        <th colspan="2">Akcija</th>
                     </thead>
                     <tbody>
+                        <?php foreach ($korisnici as $korisnik): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Bruno Miklin</td>
-                            <td>4.</td>
-                            <td>Tehničar za računlastvo</td>
-                            <td>Admin</td>
-                            <td><a href="#" class="obrisi">Obriši</a></td>
-                            <td><a href="#" class="obrisi" style="color: green;">Uredi</a></td>
+                            <td><?php echo $korisnik['id']; ?></td>
+                            <td><?php echo $korisnik['ime'] . " " . $korisnik['prezime']; ?></td>
+                            <td><?php if($korisnik['admin']==0){
+                                echo ('Učenik');
+                            } 
+                            else
+                            {
+                                echo ('Admin');
+                            }
+                            ?></td>
+                            <td><a href="index.php?obrisan_id=<?php echo $korisnik['id'] ?> " class=" obrisi">Obriši</a>
+                            </td>
+                            <td><a href="index.php?uredi_id=<?php echo $korisnik['id'] ?> " class="obrisi"
+                                    style="color: green;">Uredi</a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Niko Trstenjak</td>
-                            <td>4.</td>
-                            <td>Strojraski računalni tehničar</td>
-                            <td>Korisnik</td>
-                            <td><a href="#" class="obrisi">Obriši</a></td>
-                            <td><a href="#" class="obrisi" style="color: green;">Uredi</a></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

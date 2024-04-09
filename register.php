@@ -42,9 +42,11 @@ include(ROOT_PATH . "/aplikacija/logike/korisnici.php");
                         <label for="prezime">Prezime</label>
                         <input type="text" name="prezime" id="prezime" required>
                     </div>
+
                     <div class="unos podataka">
                         <label for="password">Lozinka</label>
                         <input type="password" name="password" id="password" required>
+
                     </div>
                     <div class="unos podataka">
                         <label for="razred">Razred</label>
@@ -61,7 +63,7 @@ include(ROOT_PATH . "/aplikacija/logike/korisnici.php");
                             <option value="RT">Tehničar za računalstvo</option>
                             <option value="ST">Strojarski računalni tehničar</option>
                             <option value="MT">Tehničar za mehatroniku</option>
-                            <option value="ET">Tehničar za elektroniku</option>
+                            <option value="ET">Elektrotehničar</option>
                         </select>
                     </div>
                     <div class="unos">

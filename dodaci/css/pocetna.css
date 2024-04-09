@@ -123,7 +123,7 @@ header .meni-crtice {
 }
 
 
-p {}
+
 
 /*O PROJEKTU OKVIR*/
 #projekt-okvir {
@@ -131,14 +131,14 @@ p {}
   background-color: white;
   ;
   position: flex;
-  width: 60%;
+  width: 68%;
   height: 1050px;
   margin: 150px auto;
   overflow: hidden;
   padding: 10px 0px 0px 10px;
   box-shadow: 1rem 1rem 1rem -1rem #555152;
-  border-radius: 20px;
-  border: black 3px solid;
+  border: black 2px solid;
+  border-radius: 25px;
 }
 
 #projekt-okvir h1 {
@@ -148,13 +148,12 @@ p {}
 }
 
 #projekt-okvir p {
-  color: rgb(0, 0, 0);
-  font-size: 22px;
-  text-align: left;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  color: black;
   font-family: sans-serif;
+  font-size: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+
 }
 
 
@@ -226,6 +225,133 @@ p {}
 /* RESPONZIVNOST ZA MOBITELE*/
 @media only screen and (max-width:1147px) {
 
+  /*O PROJEKTU OKVIR*/
+  #projekt-okvir {
+    min-height: 100%;
+    background-color: white;
+    ;
+    position: flex;
+    width: 68%;
+    height: 1050px;
+    margin: 150px auto;
+    overflow: hidden;
+    padding: 10px 0px 0px 10px;
+    box-shadow: 1rem 1rem 1rem -1rem #555152;
+    border: black 2px solid;
+    border-radius: 25px;
+  }
+
+  #projekt-okvir h1 {
+    font-size: 30px;
+    color: #555152;
+    text-align: center;
+  }
+
+  #projekt-okvir p {
+    color: black;
+    font-family: sans-serif;
+    font-size: 13px;
+    margin-right: 25px;
+    margin-left: 25px;
+
+  }
+
+  header ul {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 100%;
+    background-color: #ADD08B;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    /* Added transition for smooth animation */
+  }
+
+  header ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  header ul li ul {
+    position: static;
+    display: block;
+    width: 100%;
+    background: inherit;
+  }
+
+  header ul li ul li a {
+    padding: 5px 10px;
+    font-size: 25px;
+    width: 100%;
+    background-color: lightgray;
+    display: block;
+    text-align: left;
+    margin-top: 0;
+    margin-right: 0;
+    color: #555152;
+    border-radius: 0;
+  }
+
+  header .meni-crtice {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+
+  }
+
+  .meni-otvoren {
+    max-height: 500px;
+  }
+
+  header .logo {
+    margin-left: 0;
+  }
+
+  header .logo-tekst {
+    margin-left: 7px;
+    font-size: 5vh;
+
+  }
+
+  header ul li ul li a:hover {
+    background: #ddefff;
+  }
+
+  header ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    margin-top: 0px;
+    font-size: 30px;
+    color: white;
+    -webkit-text-stroke: 1.2px;
+    background-color: #555152;
+    border-radius: 0px;
+    margin-right: 10px;
+    width: 100%;
+  }
+
+
+  header .meni-crtice {
+    display: block;
+    position: absolute;
+    right: 35px;
+    top: 45px;
+    font-size: 1.5em;
+  }
+
+  .slider-objave {
+    position: relative;
+    top: 290px;
+    margin-top: 300px;
+
+    background: white;
+  }
+
   /*ZAGLAVLJE*/
   .zaglavlje {
     border: 2px white solid;
@@ -287,96 +413,5 @@ p {}
     justify-content: space-around;
   }
 
-  /*...ZAGLAVLJE*/
-  header {
-    position: relative;
-
-  }
-
-  header ul {
-    width: 100%;
-    background-color: #ADD08B;
-    max-height: 0px;
-    overflow: hidden;
-
-  }
-
-  header ul li {
-    width: 100%;
-  }
-
-  header ul li ul {
-    position: static;
-    display: block;
-    width: 100%;
-    background: inherit;
-  }
-
-  header ul li ul li a {
-    padding: 5px 10px;
-    font-size: 25px;
-    width: 100%;
-    background-color: lightgray;
-    display: block;
-    text-align: left;
-    margin-top: 0;
-    margin-right: 40px;
-    color: #555152;
-    padding-left: 50px;
-    border-radius: 0px;
-  }
-
-  header .meni-crtice {
-    display: block;
-    position: absolute;
-    right: 40px;
-    top: 42px;
-    font-size: 2.5em;
-  }
-
-  header .logo-tekst {
-    margin-top: 40px;
-    margin-left: 5px;
-    font-family: 'Candal', serif;
-    font-size: 4vh;
-  }
-
-  header ul li ul li a:hover {
-    background: #ddefff;
-  }
-
-  header ul li a {
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    margin-top: 0px;
-    font-size: 30px;
-    color: white;
-    -webkit-text-stroke: 1.2px;
-    background-color: #555152;
-    border-radius: 0px;
-    margin-right: 10px;
-    width: 100%;
-  }
-
-  .prikazi {
-    max-height: 100em;
-  }
-
-  @media only screen and (max-width: 768px) {
-    #projekt-okvir {
-      width: 90%;
-      height: 1050px;
-      margin: 50px auto;
-    }
-
-    #projekt-okvir h1 {
-      font-size: 20px;
-    }
-
-    #projekt-okvir p {
-      font-size: 5px;
-    }
-  }
 
 }

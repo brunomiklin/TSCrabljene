@@ -1,6 +1,12 @@
 <?php
 include("../path.php");
 include(ROOT_PATH . "/aplikacija/logike/objavaljuj.php");
+if (!isset($_SESSION['ime'])) {
+    // Ako sesija nije postavljena, preusmjeri korisnika na drugu stranicu
+    header("Location: ../index.php"); 
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="hr">
@@ -46,6 +52,8 @@ include(ROOT_PATH . "/aplikacija/logike/objavaljuj.php");
                     <li>
                         <!--TIPKA PROJEKT-->
                         <a href="../index.php">PROJEKT</a>
+                        <a>
+                            <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']; ?></a>
                     </li>
                     <li><a href="../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
                 </ul>
@@ -66,18 +74,22 @@ include(ROOT_PATH . "/aplikacija/logike/objavaljuj.php");
                         <th>SN</th>
                         <th>Naziv</th>
                         <th>Autor</th>
-                        <th colspan="1">Akcija</th>
-                        <th>Objava</th>
+                        <th colspan="2">Akcija</th>
                     </thead>
                     <tbody>
-                        <?php foreach ($objave as $key => $objava): ?>
+                        <?php  $brojac=1;
+                        foreach ($objave as $key => $objava): ?>
+
+                        <?php  if ($objava['korisnik_id'] == $_SESSION['id']): ?>
                         <tr>
-                            <td><?php echo $key + 1;?></td>
+                            <td><?php echo $brojac++;?></td>
                             <td><?php echo $objava['naslov']?></td>
-                            <td>Bruno Miklin</td>
-                            <td><a href="#" class="obrisi">Obriši</a></td>
-                            <td><a href="#" style="color: #6a8055; text-decoration: none;">LINK</a></td>
+                            <td><?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] ?></td>
+                            <td><a href="uredioglas.php?id=<?php echo $objava['id'];?>" class="uredi">Uredi</a></td>
+                            <td><a href="index.php?delete_id=<?php echo $objava['id'];?>" class=" obrisi">Obriši</a>
+                            </td>
                         </tr>
+                        <?php endif; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

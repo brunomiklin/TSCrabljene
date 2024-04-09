@@ -591,81 +591,87 @@ header .meni-crtice {
 
 /* RESPONZIVNOST ZA MOBITELE*/
 @media only screen and (max-width:1223px) {
+  .prikazi {
+    max-height: 500em;
+  }
 
   /*STRELICE*/
   .slider-objave .sljedeca-strojari {
     position: absolute;
     top: 50%;
-    right: 30PX;
+    right: 20px;
     font-size: 50px;
+
   }
 
   .slider-objave .prosla-strojari {
     position: absolute;
     top: 50%;
-    left: 30PX;
+    left: 20px;
     font-size: 50px;
   }
 
   .slider-objave .sljedeca-racunalci {
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 20px;
     font-size: 50px;
+
   }
 
   .slider-objave .prosla-racunalci {
     position: absolute;
     top: 50%;
-    left: 30px;
+    left: 20px;
     font-size: 50px;
   }
 
   .slider-objave .sljedeca-elektrici {
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 20px;
     font-size: 50px;
+
   }
 
   .slider-objave .prosla-elektrici {
     position: absolute;
     top: 50%;
-    left: 30px;
+    left: 20px;
     font-size: 50px;
   }
 
   .slider-objave .sljedeca-mehici {
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 20px;
     font-size: 50px;
   }
 
   .slider-objave .prosla-mehici {
     position: absolute;
-    top: 45%;
-    left: 30px;
+    top: 50%;
+    left: 20px;
     font-size: 50px;
   }
 
   /*....STRELICE*/
 
-  header {
-    position: relative;
-
-  }
-
   header ul {
+    position: absolute;
+    top: 120px;
+    right: 0;
     width: 100%;
     background-color: #ADD08B;
     max-height: 0px;
     overflow: hidden;
-
+    transition: max-height 0.5s ease;
+    /* Added transition for smooth animation */
   }
 
   header ul li {
     width: 100%;
+    text-align: center;
   }
 
   header ul li ul {
@@ -683,26 +689,33 @@ header .meni-crtice {
     display: block;
     text-align: left;
     margin-top: 0;
-    margin-right: 40px;
+    margin-right: 0;
     color: #555152;
-    padding-left: 50px;
-    border-radius: 0px;
+    border-radius: 0;
   }
 
   header .meni-crtice {
     display: block;
     position: absolute;
-    right: 60px;
-    top: 42px;
-    font-size: 2.5em;
+    right: 15px;
+    top: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
 
   }
 
+  .meni-otvoren {
+    max-height: 500px;
+  }
+
+  header .logo {
+    margin-left: 0;
+  }
+
   header .logo-tekst {
-    margin-top: 40px;
-    margin-left: 5px;
-    font-family: 'Candal', serif;
-    font-size: 4vh;
+    margin-left: 7px;
+    font-size: 5vh;
+
   }
 
   header ul li ul li a:hover {
@@ -723,9 +736,13 @@ header .meni-crtice {
     width: 100%;
   }
 
-  .prikazi {
-    max-height: 500em;
 
+  header .meni-crtice {
+    display: block;
+    position: absolute;
+    right: 35px;
+    top: 45px;
+    font-size: 1.5em;
   }
 
   .slider-objave {

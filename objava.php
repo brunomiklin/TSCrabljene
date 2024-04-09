@@ -1,107 +1,100 @@
-<?php include("path.php")?>
+<?php
+include("path.php");
+include("aplikacija/logike/objavaljuj.php");
+
+
+if(isset($_GET['id']))
+{
+    $objava = odaberiJedan('objave', ['id '=> $_GET['id']]);
+    $korisnik_id = $objava['korisnik_id'];
+    $korisnik = odaberiJedan('korisnici', ['id'=>  $korisnik_id]);
+    $smjerovi = array(
+        'RT' => 'Tehničar za računalstvo',
+        'ST' => 'Strojarski računalni tehničar',
+        'MT' => 'Tehničar za mehatroniku',
+        'ET' => 'Elektrotehničar'
+    );
+    
+}
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dodaci/css/gotova_objava.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Bruno Miklin 4RT" />
 
-    <title>OBJAVA</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="dodaci/css/gotova_objava.css" />
+
     <!--FONTOVI-->
     <link rel=" preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/5b2a28928a.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet" />
-    <title>Pocetna</title>
+    <title>Lista oglasa</title>
 </head>
 
 <body>
-    <header>
+    <header class="zaglavlje">
         <!--LOGO TSC RABLJENE-->
         <div class="logo">
             <h1 class="logo-tekst">
-                <a><span>OBJAVA</span></a>
-                <i class="fa-solid fa-book"></i>
+                <a href="#" class="strelica" onclick="history.back(); return false;"><i
+                        class="fa-solid fa-arrow-left"></i></a>
+                <a href="https://tsck.hr/"><span>OBJAVA</span></a>
+
+
             </h1>
         </div>
-        <i class="fa fa-bars meni-crtice"></i>
-        <ul class="navigacija">
-            <li>
-                <!--DROP DOWN IME PREZIME RAZRED-->
-                <a href="#" class="ime">
-                    <i class="fa fa-user"></i>
-                    Bruno Miklin 4.RT
-                    <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
-                </a>
-                <ul>
-                    <li><a href="#">Objavi oglas</a></li>
-                    <li><a href="#" class="odjava">Odjavi se</a></li>
-                </ul>
-            </li>
-        </ul>
+
+
     </header>
 
-    <!--SLIKE-->
-    <h3>PRODAJEM RABLJENE KNJIGE ZA SMJER TEHNIČAR ZA RAČUNALSTVO</h3>
-    <div class="content-container">
-        <div class="opis">
-            <h1>Oglas objavio:<span> Bruno Miklin</span></h1>
-            <h1>Smjer: <span> Tehničar za računalstvo </span></h1>
-            <h1>Razred:<span> 4.</span></h1>
-            <h1>Kontakt:<span> 099 655 9429</span></h1>
-            <h1>Cijena:<span> 50$</span></h1>
-            <h1>Datum:<span> 21.1.2021.</span></h1>
-            <h1>Opis:</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-                libero? Illo reprehender
-            </p>
+    <div class="glavni-okvir">
+        <div class="lijevi-pokaznik">
 
+            <ul>
+                <h3>Oglas objavio:<span> <?php echo $korisnik['ime'] . ' ' . $korisnik ['prezime'] ?></span></h3>
+                <h3>Smjer: <span> <?php
+                if (isset($objava['smjer'])) {
+           
+                    if (array_key_exists($objava['smjer'], $smjerovi)) {
+               
+                        echo $smjerovi[$objava['smjer']];
+                    } else {
+                      
+                        echo $objava['smjer'];
+                    }
+                }
+                    
+                ?> </span></h3>
+                <h3>Razred:<span> <?php echo $objava['razred'] ?>.</span></h3>
+                <h3>Kontakt:<span> <?php echo $objava['kontakt'] ?> </span></h3>
+                <h3>Cijena:<span> <?php echo $objava['cijena'] ?>€</span></h3>
+                <h3>Datum:<span> <?php echo date('F j, Y', strtotime($objava['datum']));?></span></h3>
+                <h3>Opis:<p><?php echo $objava['opis'] ?>
+                    </p>
+                </h3>
+
+
+
+
+
+            </ul>
         </div>
-        <div class="slider-container">
-            <div class="slider">
-                <img class="mySlides" src="/slike/slika1.png">
+        <div class="admin-komande">
+            <div class="sadrzaj">
+                <h2 class="naziv-stranice">Fotografija</h2>
+                <img src="dodaci/slike/<?php echo $objava['slika'] ?>" alt="slika nije učitana">
             </div>
-
-        </div>
-
-    </div>
-    <!--/SLIKE-->
-
-    <!--ZAGLAVLJE-->
-    <div class="zaglavlje">
-        <div class="zaglavlje-tekst">
-            <div class="zaglavlje-sekcija logorabljene">
-                <h1>
-                    <span>TŠČ </span>Rabljene
-                    <i class="fa-solid fa-book"></i>
-                </h1>
-            </div>
-            <div class="zaglavlje-sekcija povratak">
-                <a id="tipka" href="#">VRATI ME GORE <i class="fa-solid fa-arrow-up" style="font-size: 0.8em"></i></a>
-            </div>
-            <div class="zaglavlje-sekcija logotsc">
-                <img src="/slike/tscklogo2.png" alt="">
-            </div>
-        </div>
-        <div class="dnozaglavlja">
-            <br></br>
-            &copy; TŠČ 2024. | Izradio Bruno Miklin
         </div>
     </div>
-    <!--SKRIPTE-->
-    <!--JQueary-->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <!--SKRIPTA ZA DROPDOWN NA MOBITELU-->
-    <script src="/js/scripts.js"></script>
+
 
 </body>
 

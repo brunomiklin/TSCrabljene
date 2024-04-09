@@ -1,6 +1,6 @@
-<?php 
-require_once(__DIR__ . "/path.php"); 
-include(ROOT_PATH . "/aplikacija/logike/korisnici.php");
+<?php
+require_once (__DIR__ . "/path.php");
+include (ROOT_PATH . "/aplikacija/logike/korisnici.php");
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,9 @@ include(ROOT_PATH . "/aplikacija/logike/korisnici.php");
         <img class="tscklogo" src="dodaci\slike\tscklogo.png" alt="tscklogo" />
         <div class="okvir okvir-forma">
             <header>Logiraj se</header>
-            <?php if($brojac>0): ?>
-            <h1 style="color: red;">Krivi pristupni podaci!</h1>
-            <?php endif;?>
+            <?php if ($brojac > 0): ?>
+                <h1 style="color: red;">Krivi pristupni podaci!</h1>
+            <?php endif; ?>
             <form action="" method="post">
                 <div class="unos podataka">
                     <label for="ime">Email</label>
