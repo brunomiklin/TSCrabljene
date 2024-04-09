@@ -60,8 +60,7 @@
             <h1>Datum:<span> 21.1.2021.</span></h1>
             <h1>Opis:</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
-                libero? Illo reprehenderit omnis impedit,
-                ullam totam quaerat error dolorem similique ipsum numquam ut optio vel expedita neque in id aspernatur?
+                libero? Illo reprehender
             </p>
 
         </div>

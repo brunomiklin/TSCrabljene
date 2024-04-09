@@ -32,7 +32,7 @@
             <!--DROP DOWN IME PREZIME RAZRED-->
             <a href="#" class="ime">
                 <i class="fa fa-user"></i>
-                <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']; ?>
+                <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '.' . $_SESSION['smjer']; ?>
                 <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
             </a>
             <ul>
@@ -42,13 +42,13 @@
                 <?php else: ?>
                 <li><a href="korisnik/index.php">Objavi oglas</a></li>
                 <?php endif; ?>
-                <li><a href="#" class="odjava">Odjavi se</a></li>
+                <li><a href="../../tscrabljene/odjava.php" class="odjava">Odjavi se</a></li>
             </ul>
         </li>
         <?php else: ?>
         <!-- Ako korisnik nije prijavljen, prikaži opcije za registraciju i prijavu -->
         <li><a href="register.php">Registriraj se</a></li>
-        <li><a href="login.php">Logiraj se</a></li>
+        <li><a href="login.php">Prijavi se</a></li>
         <?php endif; ?>
     </ul>
 </header>

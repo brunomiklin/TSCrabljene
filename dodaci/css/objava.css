@@ -74,8 +74,7 @@ body {
 
 }
 
-/*TABLCA*/
-table {
+* TABLICA */ table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.1rem;
@@ -88,11 +87,7 @@ td {
   border-bottom: #ADD08B 1px solid;
 }
 
-
-/*//TABLCA*/
-
-
-/*TIPKICE*/
+/* TIPKICE */
 .tipkice {
   display: flex;
   justify-content: left;
@@ -109,7 +104,6 @@ td {
 }
 
 .tipkice button {
-
   margin-right: 10px;
   width: 104px;
   height: 42px;
@@ -124,7 +118,6 @@ td {
 .obrisi {
   color: red;
   text-decoration: none;
-
 }
 
 .obrisi:hover {
@@ -136,7 +129,7 @@ td {
   color: rgba(255, 255, 255, 0.386);
 }
 
-/*TIPKICE*/
+/*//tipkice*/
 
 /*//STRANICA I OKVIR STRANICE*/
 
@@ -193,7 +186,8 @@ header ul li a {
   -webkit-text-stroke: 1.2px;
   background-color: #ADD08B;
   border-radius: 1%;
-  margin-right: 30px;
+  margin-right: 10px;
+
 }
 
 header ul li a:hover {
@@ -259,90 +253,77 @@ header .meni-crtice {
 
 
 
-
-
-
 /* RESPONZIVNOST ZA MOBITELE*/
-@media only screen and (max-width:1147px) {
+@media only screen and (max-width: 1000px) {
 
-  header {
-    position: relative;
+  /* Zaglavlje */
+  header .logo-tekst {
+    font-size: 3vh;
+  }
+
+  header ul li {
+    float: none;
+    position: static;
+  }
+
+
+  .glavni-okvir .lijevi-pokaznik {
+    height: 50%;
+  }
+
+
+  table {
+    font-size: 0.8rem;
 
   }
 
   header ul {
-    width: 100%;
-    background-color: #ADD08B;
-    max-height: 0px;
-    overflow: hidden;
-
-  }
-
-  header ul li {
-    width: 100%;
+    max-height: 1000px;
+    /* Promijenite na željenu visinu */
+    overflow: visible;
   }
 
   header ul li ul {
-    position: static;
-    display: block;
-    width: 100%;
-    background: inherit;
-  }
-
-  header ul li ul li a {
-    padding: 5px 10px;
-    font-size: 25px;
-    width: 100%;
-    background-color: lightgray;
-    display: block;
-    text-align: left;
-    margin-top: 0;
-    margin-right: 40px;
-    color: #555152;
-    padding-left: 50px;
-    border-radius: 0px;
-  }
-
-  header .meni-crtice {
-    display: block;
-    position: absolute;
-    right: 40px;
-    top: 42px;
-    font-size: 2.5em;
-  }
-
-  header .logo-tekst {
-    margin-top: 40px;
-    margin-left: 5px;
-    font-family: 'Candal', serif;
-    font-size: 4vh;
-  }
-
-  header ul li ul li a:hover {
-    background: #ddefff;
+    display: none;
   }
 
   header ul li a {
-    text-decoration: none;
     display: block;
-    padding: 10px;
-    margin-top: 0px;
-    font-size: 30px;
-    color: white;
-    -webkit-text-stroke: 1.2px;
-    background-color: #555152;
-    border-radius: 0px;
-    margin-right: 10px;
     width: 100%;
+    padding: 10px;
+    border-radius: 0;
   }
 
   .odjava {
-    margin-left: -10%;
-    padding-left: 92px;
-    color: red;
+    margin-left: 0;
   }
 
-  .prikazi {
-    max-height: 100em;
+  /* Lijevi pokazivač */
+  .glavni-okvir .lijevi-pokaznik ul li a {
+    font-size: 16px;
+    padding: 15px;
   }
+
+  /* Glavni okvir */
+  .glavni-okvir {
+    flex-direction: column;
+  }
+
+  .glavni-okvir .lijevi-pokaznik {
+    flex: none;
+    height: 110%;
+  }
+
+  .glavni-okvir .admin-komande {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Tablica */
+  table {
+    font-size: 10px;
+    size: 25px;
+  }
+
 }

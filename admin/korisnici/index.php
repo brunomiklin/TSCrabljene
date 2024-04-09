@@ -28,24 +28,18 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
         <!--LOGO TSC RABLJENE-->
         <div class="logo">
             <h1 class="logo-tekst">
-                <a href="https://tsck.hr/"><span>TŠČ</span></a>
-                Rabljene
-                <i class="fas fa-book"></i>
+                <a href="https://tsck.hr/"><span><i class="fa-solid fa-gears"></i></i></span></a>
+                ADMIN
+
                 <!-- Koristite 'fas' umjesto 'fa-solid' za Font Awesome ikonu -->
             </h1>
         </div>
         <i class="fa fa-bars meni-crtice"></i>
         <ul class="navigacija">
-            <li> <a href="../pocetna.php" class="ime">PROJEKT</a></li>
+            <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
             <li>
-                <a href="#projekt-okvir" class="ime">
-                    <i class="fa fa-user"></i>
-                    <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']  ;?>
-                    <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
-                </a>
-                <ul>
-                    <li><a href="#" class="odjava">Odjavi se</a></li>
-                </ul>
+            <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
+
             </li>
         </ul>
     </header>

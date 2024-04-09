@@ -1,5 +1,5 @@
-<?php include("path.php");
-include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+<?php include ("path.php");
+include (ROOT_PATH . "/aplikacija/baza/funkcije.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
 
 <body>
     <!--UMETNUTO ZAGLAVLJE-->
-    <?php include("aplikacija/umetci/zaglavlje.php")?>
+    <?php include ("aplikacija/umetci/zaglavlje.php") ?>
     <!--//UMETNUTO ZAGLAVLJE-->
 
 
@@ -35,7 +35,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
         <!--SLIDER ZA OBJAVE - STROJARSTVO-->
 
         <div class="slider-objave" id="strojarstvo">
-            <h1 class="naslov-slider">STROJARSKI RAČUNALNI TEHNIČAR</h1>
+            <h1 class="naslov-slider">STROJARSKI RAČUNALNI TEHNIČAR - 4.RAZRED</h1>
             <i class="fas fa-chevron-left prosla-strojari"></i>
             <i class="fas fa-chevron-right sljedeca-strojari"></i>
             <div class="okvir-objava-strojari">
@@ -123,7 +123,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
         <!--SLIDER ZA OBJAVE - RAČUNALSTVO-->
 
         <div class="slider-objave" id="racunalstvo">
-            <h1 class="naslov-slider">TEHNIČAR ZA RAČUNALSTVO</h1>
+            <h1 class="naslov-slider">TEHNIČAR ZA RAČUNALSTVO - 4.RAZRED</h1>
             <i class="fas fa-chevron-left prosla-racunalci"></i>
             <i class="fas fa-chevron-right sljedeca-racunalci"></i>
             <div class="okvir-objava-racunalci">
@@ -212,7 +212,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
         <!--SLIDER ZA OBJAVE - TEHNIČAR ZA MEHATRONIKU-->
 
         <div class="slider-objave" id="mehatronika">
-            <h1 class="naslov-slider">TEHNIČAR ZA MEHATORNIKU</h1>
+            <h1 class="naslov-slider">TEHNIČAR ZA MEHATORNIKU - 4.RAZRED</h1>
             <i class="fas fa-chevron-left prosla-mehici"></i>
             <i class="fas fa-chevron-right sljedeca-mehici"></i>
             <div class="okvir-objava-mehici">
@@ -302,7 +302,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
 
         <!--SLIDER ZA OBJAVE - ELEKTROTENHIČAR-->
         <div class="slider-objave" id="elektrotehnika">
-            <h1 class="naslov-slider">ELEKTROTENHIČAR</h1>
+            <h1 class="naslov-slider">ELEKTROTENHIČAR - 4.RAZRED</h1>
             <i class="fas fa-chevron-left prosla-elektrici"></i>
             <i class="fas fa-chevron-right sljedeca-elektrici"></i>
             <div class="okvir-objava-elektrici">
@@ -387,7 +387,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
         </div>
 
         <!--UMETANJE PODNOŽJA-->
-        <?php include("aplikacija/umetci/podnožje.php")?>
+        <?php include ("aplikacija/umetci/podnožje.php") ?>
         <!--//UMETANJE PODNOŽJA-->
 
 

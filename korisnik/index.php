@@ -1,7 +1,7 @@
-<?php include("../path.php");
-include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
+<?php
+include("../path.php");
+include(ROOT_PATH . "/aplikacija/logike/objavaljuj.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="hr">
 
@@ -33,25 +33,23 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
                 <!-- Koristite 'fas' umjesto 'fa-solid' za Font Awesome ikonu -->
             </h1>
         </div>
-        <i class="fa fa-bars meni-crtice"></i>
-        <ul class="navigacija">
-            <li>
-                <a href="#" class="ime">
-                    <i class="fa fa-user"></i>
-                    <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']; ?>
-                    <i class="fa fa-chevron-down" style="font-size: 0.8em"></i>
-                </a>
-                <ul>
-                    <li><a href="#" class="odjava">Odjavi se</a></li>
-                </ul>
-            </li>
-        </ul>
+
+
     </header>
 
     <div class="glavni-okvir">
         <div class="lijevi-pokaznik">
+
             <ul>
                 <li><a href="index.php">Uredi Objave</a></li>
+                <ul class="navigacija">
+                    <li>
+                        <!--TIPKA PROJEKT-->
+                        <a href="../index.php">PROJEKT</a>
+                    </li>
+                    <li><a href="../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
+                </ul>
+
             </ul>
         </div>
         <div class="admin-komande">
@@ -72,20 +70,15 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
                         <th>Objava</th>
                     </thead>
                     <tbody>
+                        <?php foreach ($objave as $key => $objava): ?>
                         <tr>
-                            <td>1</td>
-                            <td>Ovo je prva objava</td>
+                            <td><?php echo $key + 1;?></td>
+                            <td><?php echo $objava['naslov']?></td>
                             <td>Bruno Miklin</td>
                             <td><a href="#" class="obrisi">Obriši</a></td>
                             <td><a href="#" style="color: #6a8055; text-decoration: none;">LINK</a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Ovo je prva objava</td>
-                            <td>Bruno Miklin</td>
-                            <td><a href="#" class="obrisi">Obriši</a></td>
-                            <td><a href="#" style="color: #6a8055; text-decoration: none;">LINK</a></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -97,8 +90,7 @@ include(ROOT_PATH . "/aplikacija/baza/funkcije.php");
 
     <!--SKRIPTA ZA ADMIN-->
     <script src="/js/skriptaadmin.js"></script>
-    <!--SKRIPTA ZA DROPDOWN NA MOBITELU-->
-    <script src="dodaci/js/skripta_dropdown.js"></script>
+
 </body>
 
 </html>
