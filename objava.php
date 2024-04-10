@@ -45,7 +45,7 @@ if(isset($_GET['id']))
             <h1 class="logo-tekst">
                 <a href="#" class="strelica" onclick="history.back(); return false;"><i
                         class="fa-solid fa-arrow-left"></i></a>
-                <a href="https://tsck.hr/"><span>OBJAVA</span></a>
+                <a><span>OBJAVA</span></a>
 
 
             </h1>

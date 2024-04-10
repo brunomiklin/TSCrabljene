@@ -36,7 +36,7 @@ if (isset($_POST['register_btn'])) {
         $_SESSION['id'] = $korisnik_id;
 
         ulogirajKorisnika($korisnik);
-        header("Location: index.php");
+        header("Location: index");
 
         exit();
     } else {
@@ -55,7 +55,7 @@ if (isset($_POST["prijava"])) {
             ulogirajKorisnika($korisnik);
 
 
-            header("Location: index.php");
+            header("Location: index");
             exit();
         } else {
             $brojac = 1;
@@ -66,16 +66,22 @@ if (isset($_POST["prijava"])) {
 }
 
 if (isset($_GET['obrisan_id'])) {
-    $count = obrisi($tablica, $_GET['obrisan_id']);
-
-    header("location: " . $_SERVER['PHP_SELF']);
+    try {
+        $count = obrisi($tablica, $_GET['obrisan_id']);
+        header("location: " . $_SERVER['PHP_SELF']);
+    } catch (mysqli_sql_exception $e) {
+        echo "<script>alert('Nemoguće je izbrisati ovog korisnika. Korisnik ima napravljene objave!');</script>";
+    }
 }
 
 if (isset($_GET['uredi_id'])) {
-    $korisnik = odaberiJedan($tablica, ['id' => $_GET['uredi_id']]);
-
-    $id = $_GET['uredi_id'];
-    $novostanje = $korisnik['admin'] == 0 ? 1 : 0;
-    $upis = azuriraj($tablica, $id, ['admin' => $novostanje]);
-    header("location: " . $_SERVER['PHP_SELF']);
+    try {
+        $korisnik = odaberiJedan($tablica, ['id' => $_GET['uredi_id']]);
+        $id = $_GET['uredi_id'];
+        $novostanje = $korisnik['admin'] == 0 ? 1 : 0;
+        $upis = azuriraj($tablica, $id, ['admin' => $novostanje]);
+        header("location: " . $_SERVER['PHP_SELF']);
+    } catch (mysqli_sql_exception $e) {
+        echo "<script>alert('Nemoguće je izvršiti operaciju nad ovim korisnikom.');</script>";
+    }
 }

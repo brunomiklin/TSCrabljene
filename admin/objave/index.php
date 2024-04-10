@@ -48,10 +48,10 @@ if ($_SESSION['admin'] != 1) {
     <div class="glavni-okvir">
         <div class="lijevi-pokaznik">
             <ul>
-                <li><a href="index.php">Uredi Objave</a></li>
-                <li><a href="../korisnici/index.php">Uredi Korisnike</a></li>
-                <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
-                <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
+                <li><a href="index">Uredi Objave</a></li>
+                <li><a href="../korisnici/">Uredi Korisnike</a></li>
+                <li> <a href="../../index" class="ime">PROJEKT</a></li>
+                <li><a href="../../odjava" class="ime" style="color:red">Odjavi se</a></li>
 
             </ul>
         </div>

@@ -103,6 +103,15 @@ td {
   color: rgba(255, 255, 255, 0.409);
 }
 
+.uredi {
+  color: #687b54;
+  text-decoration: none;
+}
+
+.uredi:hover {
+  text-decoration: underline;
+}
+
 .tipkice button {
   margin-right: 10px;
   width: 104px;

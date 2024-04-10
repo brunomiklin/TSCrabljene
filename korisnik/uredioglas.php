@@ -41,7 +41,7 @@ if (!isset($_SESSION['ime'])) {  header("Location: ../index.php");
     <div class="glavni-okvir">
         <div class="lijevi-pokaznik">
             <ul>
-                <li><a href="index.php">Uredi Objave</a></li>
+                <li><a href="index">Uredi Objave</a></li>
             </ul>
         </div>
 

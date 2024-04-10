@@ -47,11 +47,11 @@ if (!isset($_SESSION['ime'])) {
         <div class="lijevi-pokaznik">
 
             <ul>
-                <li><a href="index.php">Uredi Objave</a></li>
+                <li><a href="index">Uredi Objave</a></li>
                 <ul class="navigacija">
                     <li>
                         <!--TIPKA PROJEKT-->
-                        <a href="../index.php">PROJEKT</a>
+                        <a href="../">PROJEKT</a>
                         <a>
                             <?php echo $_SESSION['ime'] . ' ' . $_SESSION['prezime'] . ' ' . $_SESSION['razred'] . '. ' . $_SESSION['smjer']; ?></a>
                     </li>
@@ -63,7 +63,7 @@ if (!isset($_SESSION['ime'])) {
         <div class="admin-komande">
             <div class="tipkice">
                 <button class="button tipkice">
-                    <a href="objavioglas.php">Dodaj Objavu</a>
+                    <a href="objavioglas">Dodaj Objavu</a>
                 </button>
             </div>
 

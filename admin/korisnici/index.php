@@ -3,7 +3,7 @@ include("../../path.php");
 include(ROOT_PATH . "/aplikacija/logike/korisnici.php");
 if ($_SESSION['admin'] != 1) {
 
-    header("Location: ../../index.php"); 
+    header("Location: ../../index"); 
     exit();
 }
 ?>
@@ -47,9 +47,9 @@ if ($_SESSION['admin'] != 1) {
         <div class="lijevi-pokaznik">
             <ul>
                 <li><a href="../objave">Uredi Objave</a></li>
-                <li><a href="index.php">Uredi Korisnike</a></li>
-                <li> <a href="../../index.php" class="ime">PROJEKT</a></li>
-                <li><a href="../../odjava.php" class="ime" style="color:red">Odjavi se</a></li>
+                <li><a href="index">Uredi Korisnike</a></li>
+                <li> <a href="../../" class="ime">PROJEKT</a></li>
+                <li><a href="../../odjava" class="ime" style="color:red">Odjavi se</a></li>
 
             </ul>
         </div>

@@ -1,0 +1,9 @@
+RewriteEngine On
+
+
+RewriteRule ^uredioglas/([0-9]+)$ /uredioglas.php?id=$1 [L]
+
+# Handle existing files and directories
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

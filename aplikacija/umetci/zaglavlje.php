@@ -10,7 +10,7 @@
     <ul class="navigacija">
         <li>
             <!--TIPKA PROJEKT-->
-            <a href="index.php">PROJEKT</a>
+            <a href="index">PROJEKT</a>
         </li>
         <li>
             <!--DROP DOWN RAZREDI-->
@@ -19,10 +19,10 @@
             </a>
 
             <ul>
-                <li><a href="prvi.php">1. razred</a></li>
-                <li><a href="drugi.php">2. razred</a></li>
-                <li><a href="treci.php">3. razred</a></li>
-                <li><a href="cetvrti.php">4. razred</a></li>
+                <li><a href="prvi">1. razred</a></li>
+                <li><a href="drugi">2. razred</a></li>
+                <li><a href="treci">3. razred</a></li>
+                <li><a href="cetvrti">4. razred</a></li>
             </ul>
         </li>
 
@@ -38,17 +38,17 @@
             <ul>
                 <!-- Ako je korisnik admin, prikaži Dashboard, inače prikaži opciju za objavu oglasa -->
                 <?php if($_SESSION['admin']): ?>
-                <li><a href="admin/objave/index.php">Dashboard</a></li>
+                <li><a href="admin/objave/">Dashboard</a></li>
                 <?php else: ?>
-                <li><a href="korisnik/index.php">Objavi oglas</a></li>
+                <li><a href="korisnik/">Objavi oglas</a></li>
                 <?php endif; ?>
-                <li><a href="odjava.php" class="odjava">Odjavi se</a></li>
+                <li><a href="odjava" class="odjava">Odjavi se</a></li>
             </ul>
         </li>
         <?php else: ?>
         <!-- Ako korisnik nije prijavljen, prikaži opcije za registraciju i prijavu -->
-        <li><a href="register.php">Registriraj se</a></li>
-        <li><a href="login.php">Logiraj se</a></li>
+        <li><a href="register">Registriraj se</a></li>
+        <li><a href="login">Logiraj se</a></li>
         <?php endif; ?>
     </ul>
 </header>
